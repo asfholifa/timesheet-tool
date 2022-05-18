@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  color: white;
+  justify-content: space-between;
+
+  :global(.ant-typography) {
+    color: white;
+  }
+
+  .user-box {
+    display: flex;
+    align-items: center;
+
+    :global(.ant-typography) {
+      margin-right: 1rem;
+    }
+  }
+}
