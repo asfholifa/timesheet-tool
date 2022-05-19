@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "p-lmles-db01.hq.ru.corp.leroymerlin.com",
+      "port": 6432,
+      "askForPassword": true,
+      "driver": "PostgreSQL",
+      "name": "les-prod",
+      "database": "lmles-store",
+      "username": "lmles_user1"
+    }
+  ]
+}

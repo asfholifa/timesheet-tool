@@ -1,0 +1,19 @@
+.col {
+  padding: 1rem;
+  border: 1px solid lightgray;
+
+  &__disabled {
+    padding: 1rem;
+    border: 1px solid lightgray;
+    background-color: rgb(230, 231, 232);
+  }
+
+  &__input {
+    border: 1px solid lightgray;
+
+    input {
+      padding: 1rem;
+      border: 0;
+    }
+  }
+}

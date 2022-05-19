@@ -1,0 +1,12 @@
+.title:global(.ant-typography) {
+  margin-bottom: 1rem !important;
+}
+
+.actions {
+  margin-bottom: 1rem;
+}
+
+.button:global(.ant-btn-link) {
+  width: 100%;
+  color: black;
+}
