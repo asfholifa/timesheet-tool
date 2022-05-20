@@ -27,12 +27,12 @@
     display: flex;
     margin: 0 1rem;
 
-    span {
-      margin: 0 1rem;
+    :global(.ant-typography) {
+      margin-bottom: 0;
     }
 
-    .date {
-      margin-top: 0;
+    span {
+      margin: 0 1rem;
     }
   }
 }

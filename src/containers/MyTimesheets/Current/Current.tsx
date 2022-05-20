@@ -177,7 +177,7 @@ const Current = () => {
             {date.startDate.format("MMM DD YY")}
           </Typography.Title>
           <span>—</span>
-          <Typography.Title level={5} className={styles.date}>
+          <Typography.Title level={5}>
             {date.endDate.format("MMM DD YY")}
           </Typography.Title>
         </div>
