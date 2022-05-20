@@ -11,6 +11,10 @@
   &__input {
     border: 1px solid lightgray;
 
+    &:global(.ant-col-2) {
+      display: flex;
+    }
+
     input {
       padding: 1rem;
       border: 0;

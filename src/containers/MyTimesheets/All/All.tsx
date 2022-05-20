@@ -1,14 +1,13 @@
-import React from "react"
-import { Typography } from "antd"
-import { pageTitles } from "@helpers/const"
-import { useLocation, Link } from "react-router-dom"
-import { Table, Tag, Input } from "antd"
-import SearchInput from "./SearchInput"
-
-const { Search } = Input
+import React from "react";
+import { Typography } from "antd";
+import { pageTitles } from "@helpers/const";
+import { useLocation, Link } from "react-router-dom";
+import { Table, Tag } from "antd";
+import SearchInput from "../../../components/SearchInput/SearchInput";
+import styles from "./All.module.scss";
 
 const All = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
   const columns = [
     {
@@ -27,13 +26,13 @@ const All = () => {
       render: (status: any) => (
         <>
           {status.map((curStatus: any) => {
-            let color = curStatus === "Submitted" ? "#389e0d" : "gray"
+            let color = curStatus === "Submitted" ? "#389e0d" : "gray";
 
             return (
               <Tag color={color} key={curStatus}>
                 {curStatus}
               </Tag>
-            )
+            );
           })}
         </>
       ),
@@ -54,7 +53,7 @@ const All = () => {
       dataIndex: "total",
       render: (total: any) => `${total} h.`,
     },
-  ]
+  ];
 
   const data = [
     {
@@ -82,7 +81,7 @@ const All = () => {
       dateFrom: "01.02.2022",
       dateTo: "20.02.2022",
     },
-  ]
+  ];
 
   // для сортировки
   // const handleTableChange = (pagination: any, filters: any, sorter: any) => {
@@ -101,9 +100,11 @@ const All = () => {
 
   return (
     <>
-      <Typography.Title level={5}>{pageTitles[pathname]}</Typography.Title>
+      <Typography.Title level={5} className={styles.title}>
+        {pageTitles[pathname]}
+      </Typography.Title>
       <SearchInput />
-      <div className="tableWrapper">
+      <div className={styles.tableWrapper}>
         <Table
           rowClassName={(_, index) =>
             index % 2 === 0 ? "table-row-light" : "table-row-dark"
@@ -113,7 +114,7 @@ const All = () => {
         />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default All
+export default All;

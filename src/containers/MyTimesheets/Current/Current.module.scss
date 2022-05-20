@@ -1,9 +1,84 @@
-.title:global(.ant-typography) {
-  margin-bottom: 1rem !important;
+.title-block {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+
+  .title-wrapper {
+    flex: 10;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hidden {
+    flex: 1;
+  }
+
+  h5 {
+    margin: 0;
+  }
+}
+
+.date-block {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+
+  .date-info {
+    display: flex;
+    margin: 0 1rem;
+
+    span {
+      margin: 0 1rem;
+    }
+
+    .date {
+      margin-top: 0;
+    }
+  }
 }
 
 .actions {
   margin-bottom: 1rem;
+  display: flex;
+
+  .button-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+
+    button:first-child {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .total-button-wrapper {
+    flex: 10;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .total-info {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 4px 15px;
+      border: 1px solid #d9d9d9;
+      border-radius: 0.313rem;
+
+      span {
+        margin-right: 0.5rem;
+      }
+
+      h5 {
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .hidden {
+    flex: 1;
+  }
 }
 
 .button:global(.ant-btn-link) {

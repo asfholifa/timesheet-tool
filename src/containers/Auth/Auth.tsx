@@ -15,6 +15,7 @@ const Auth = () => {
         userEmail: "mail@mail.com",
         userName: "Глеб Сухоруков",
         isAuth: true,
+        role: "User",
       })
     );
   };
@@ -34,7 +35,9 @@ const Auth = () => {
       autoComplete="off"
     >
       <Form.Item>
-        <Title level={3}>Timesheet</Title>
+        <Title level={3} className={styles.title}>
+          Timesheet
+        </Title>
       </Form.Item>
       <Form.Item
         label="Username"

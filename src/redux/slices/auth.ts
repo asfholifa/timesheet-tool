@@ -6,12 +6,14 @@ interface AuthState {
   userEmail: string;
   userName: string;
   isAuth: boolean;
+  role: "User" | "PMO" | null;
 }
 
 const initialState: AuthState = {
   userEmail: "",
   userName: "",
   isAuth: false,
+  role: null,
 };
 
 export const authSlice = createSlice({
