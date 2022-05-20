@@ -16,6 +16,7 @@ const All = () => {
       dataIndex: 'name',
       key: 'name',
       render: (text: any, record: any) => <Link to='/'>{`${text} ${record.dateFrom}-${record.dateTo}`}</Link>,
+      sorter: true
     },
     {
       title: 'Status',
@@ -83,6 +84,20 @@ const All = () => {
     },
   ];
 
+// для сортировки
+  // const handleTableChange = (pagination: any, filters: any, sorter: any) => {
+  //   setSorteredState(sorter)
+  //   switch (sorter.order) {
+  //       case 'descend':
+  //           sorter.order = 'DESC'
+  //           break
+  //       case 'ascend':
+  //           sorter.order = 'ASC'
+  //           break
+  //       case undefined:
+  //           sorter.field = undefined
+  //           break
+  //   }
 
   return (
     <>
