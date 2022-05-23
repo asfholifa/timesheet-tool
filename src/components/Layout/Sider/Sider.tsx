@@ -12,7 +12,7 @@ import {
   DownloadOutlined,
 } from "@ant-design/icons";
 import styles from "./Sider.module.scss";
-import { ALL_TIMESHEETS_PAGE, CURRENT_TIMESHEETS_PAGE } from "@helpers/routes";
+import { ALL_TIMESHEETS_PAGE, CURRENT_TIMESHEETS_PAGE, DOWNLOAD_TIMESHEET_REPORT } from "@helpers/routes";
 
 interface SiderProps {
   children: JSX.Element;
@@ -53,7 +53,7 @@ const Sider: FC<SiderProps> = ({ children }) => {
       ALL_TIMESHEETS_PAGE,
       <FolderOpenOutlined />
     ),
-
+    getItem(true, 'Download Timesheet Report', DOWNLOAD_TIMESHEET_REPORT, <DownloadOutlined />),
     getItem(role === "PMO", "Resources", "sub1", <SettingOutlined />, [
       getItem(true, "Act as Delegate", "4"),
       getItem(true, "Edit Resource", "5"),
