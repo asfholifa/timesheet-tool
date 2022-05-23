@@ -1,18 +1,25 @@
 import React, { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import type { MenuProps } from "antd";
 import { Layout, Typography, Menu } from "antd";
-import { useNavigate } from "react-router-dom";
-import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import { authSelector } from "@redux/slices/auth";
-import { useAppSelector } from "@redux/hooks";
 import {
+  LeftOutlined,
+  RightOutlined,
   SettingOutlined,
   FolderOpenOutlined,
   FileTextOutlined,
   DownloadOutlined,
+  FileAddOutlined,
 } from "@ant-design/icons";
+import { authSelector } from "@redux/slices/auth";
+import { useAppSelector } from "@redux/hooks";
+import DownloadTimeSheet from "@components/DownloadTimesheet/DownloadTimeSheet";
+import {
+  ALL_TIMESHEETS_PAGE,
+  CURRENT_TIMESHEETS_PAGE,
+  TASKS_CREATION_PAGE,
+} from "@helpers/routes";
 import styles from "./Sider.module.scss";
-import { ALL_TIMESHEETS_PAGE, CURRENT_TIMESHEETS_PAGE, DOWNLOAD_TIMESHEET_REPORT } from "@helpers/routes";
 
 interface SiderProps {
   children: JSX.Element;
@@ -24,6 +31,7 @@ const Sider: FC<SiderProps> = ({ children }) => {
   const navigate = useNavigate();
   const { isAuth, role } = useAppSelector(authSelector);
   const [collapsed, setCollapsed] = useState(true);
+  const [reportModalVisible, setReportModalVisible] = useState(false);
 
   const getItem = (
     visible: boolean,
@@ -53,7 +61,7 @@ const Sider: FC<SiderProps> = ({ children }) => {
       ALL_TIMESHEETS_PAGE,
       <FolderOpenOutlined />
     ),
-    getItem(true, 'Download Timesheet Report', DOWNLOAD_TIMESHEET_REPORT, <DownloadOutlined />),
+
     getItem(role === "PMO", "Resources", "sub1", <SettingOutlined />, [
       getItem(true, "Act as Delegate", "4"),
       getItem(true, "Edit Resource", "5"),
@@ -63,8 +71,15 @@ const Sider: FC<SiderProps> = ({ children }) => {
     getItem(
       role === "PMO",
       "Download timesheet report",
-      "3",
+      "downloadReport",
       <DownloadOutlined />
+    ),
+
+    getItem(
+      role === "PMO",
+      "Tasks Creation",
+      TASKS_CREATION_PAGE,
+      <FileAddOutlined />
     ),
   ];
 
@@ -73,7 +88,16 @@ const Sider: FC<SiderProps> = ({ children }) => {
   };
 
   const goTo = ({ key }: { key: string }) => {
-    navigate(key);
+    switch (key) {
+      case "downloadReport": {
+        setReportModalVisible(true);
+        break;
+      }
+      default: {
+        navigate(key);
+        break;
+      }
+    }
   };
 
   return (
@@ -96,7 +120,7 @@ const Sider: FC<SiderProps> = ({ children }) => {
           )}
           <Menu
             onClick={goTo}
-            defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={[CURRENT_TIMESHEETS_PAGE]}
             mode="inline"
             theme="dark"
             inlineCollapsed={collapsed}
@@ -105,6 +129,10 @@ const Sider: FC<SiderProps> = ({ children }) => {
         </Layout.Sider>
       )}
       <Layout.Content className={styles.content}>{children}</Layout.Content>
+      <DownloadTimeSheet
+        reportModalVisible={reportModalVisible}
+        setReportModalVisible={setReportModalVisible}
+      />
     </Layout>
   );
 };

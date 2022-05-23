@@ -15,7 +15,7 @@ const Auth = () => {
         userEmail: "mail@mail.com",
         userName: "Глеб Сухоруков",
         isAuth: true,
-        role: "User",
+        role: "PMO",
       })
     );
   };
