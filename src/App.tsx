@@ -6,11 +6,12 @@ import {
   AUTH_PAGE,
   CURRENT_TIMESHEETS_PAGE,
   MY_TIMESHEETS_PAGE,
+  DOWNLOAD_TIMESHEET_REPORT
 } from "@helpers/routes";
 import { useAppSelector } from "@redux/hooks";
 import { authSelector } from "@redux/slices/auth";
 import MyTimesheets from "@containers/MyTimesheets/MyTimesheets";
-
+import DownloadTimeSheet from "@containers/DownloadTimesheet/DownloadTimeSheet"
 const App = () => {
   const { isAuth } = useAppSelector(authSelector);
 
@@ -23,6 +24,10 @@ const App = () => {
               <Route
                 path={`${MY_TIMESHEETS_PAGE}/*`}
                 element={<MyTimesheets />}
+              />
+              <Route
+                path={`${DOWNLOAD_TIMESHEET_REPORT}/*`}
+                element={<DownloadTimeSheet />}
               />
               <Route
                 path="*"
