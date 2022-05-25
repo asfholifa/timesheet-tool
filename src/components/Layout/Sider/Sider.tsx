@@ -20,6 +20,8 @@ import {
   TASK_CREATION_PAGE,
 } from "@helpers/routes";
 import styles from "./Sider.module.scss";
+import ActAsDelegate from "@components/ActAsDelegate/ActAsDelegate";
+import AddResource from "@components/AddResource/AddResource";
 
 interface SiderProps {
   children: JSX.Element;
@@ -32,6 +34,8 @@ const Sider: FC<SiderProps> = ({ children }) => {
   const { isAuth, role } = useAppSelector(authSelector);
   const [collapsed, setCollapsed] = useState(true);
   const [reportModalVisible, setReportModalVisible] = useState(false);
+  const [delegateModalVisible, setDelegateModalVisible] = useState(false);
+  const [addResourceModalVisible, setAddResourceModalVisible] = useState(false);
 
   const getItem = (
     visible: boolean,
@@ -63,9 +67,9 @@ const Sider: FC<SiderProps> = ({ children }) => {
     ),
 
     getItem(role === "PMO", "Resources", "sub1", <SettingOutlined />, [
-      getItem(true, "Act as Delegate", "4"),
-      getItem(true, "Edit Resource", "5"),
-      getItem(true, "Add Resource", "6"),
+      getItem(true, "Act as Delegate", "ActAsDelegate"),
+      getItem(true, "Edit resource", "5"),
+      getItem(true, "Add Resource", "AddResource"),
     ]),
 
     getItem(
@@ -91,6 +95,14 @@ const Sider: FC<SiderProps> = ({ children }) => {
     switch (key) {
       case "downloadReport": {
         setReportModalVisible(true);
+        break;
+      }
+      case "ActAsDelegate": {
+        setDelegateModalVisible(true);
+        break;
+      }
+      case "AddResource": {
+        setAddResourceModalVisible(true);
         break;
       }
       default: {
@@ -133,6 +145,10 @@ const Sider: FC<SiderProps> = ({ children }) => {
         reportModalVisible={reportModalVisible}
         setReportModalVisible={setReportModalVisible}
       />
+      <ActAsDelegate delegateModalVisible={delegateModalVisible}
+        setDelegateModalVisible={setDelegateModalVisible} />
+      <AddResource addResourceModalVisible={addResourceModalVisible}
+        setAddResourceModalVisible={setAddResourceModalVisible} />
     </Layout>
   );
 };
