@@ -1,0 +1,20 @@
+.title {
+  &:global(.ant-typography) {
+    margin-bottom: 1rem;
+  }
+}
+
+.actions {
+  display: flex;
+  margin-bottom: 1rem;
+
+  button:first-child {
+    margin-right: 1rem;
+  }
+}
+
+.button {
+  &:global(.ant-btn) {
+    padding: 0;
+  }
+}

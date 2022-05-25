@@ -17,7 +17,7 @@ import DownloadTimeSheet from "@components/DownloadTimesheet/DownloadTimeSheet";
 import {
   ALL_TIMESHEETS_PAGE,
   CURRENT_TIMESHEETS_PAGE,
-  TASKS_CREATION_PAGE,
+  TASK_CREATION_PAGE,
 } from "@helpers/routes";
 import styles from "./Sider.module.scss";
 
@@ -77,8 +77,8 @@ const Sider: FC<SiderProps> = ({ children }) => {
 
     getItem(
       role === "PMO",
-      "Tasks Creation",
-      TASKS_CREATION_PAGE,
+      "Task Creation",
+      TASK_CREATION_PAGE,
       <FileAddOutlined />
     ),
   ];

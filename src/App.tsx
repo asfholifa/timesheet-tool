@@ -6,10 +6,12 @@ import {
   AUTH_PAGE,
   CURRENT_TIMESHEETS_PAGE,
   MY_TIMESHEETS_PAGE,
+  TASK_CREATION_PAGE,
 } from "@helpers/routes";
 import { useAppSelector } from "@redux/hooks";
 import { authSelector } from "@redux/slices/auth";
 import MyTimesheets from "@containers/MyTimesheets/MyTimesheets";
+import TaskCreation from "@containers/TaskCreation/TaskCreation";
 
 const App = () => {
   const { isAuth } = useAppSelector(authSelector);
@@ -23,6 +25,10 @@ const App = () => {
               <Route
                 path={`${MY_TIMESHEETS_PAGE}/*`}
                 element={<MyTimesheets />}
+              />
+              <Route
+                path={`${TASK_CREATION_PAGE}`}
+                element={<TaskCreation />}
               />
               <Route
                 path="*"
